@@ -1,0 +1,9 @@
+<h1>Pana</1>
+<h1> LIST OF ALL MOVIES </h1>
+<ul>
+<% @lists.each do |list| %>
+<li><%= link_to list.name, list_path(list) %></li>
+<% end %>
+</ul>
+
+<%= link_to  "New list", new_list_path, class: "btn btn-secondary" %>
