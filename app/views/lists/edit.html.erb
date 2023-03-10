@@ -1,6 +1,5 @@
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
   <%= f.input :photo, as: :file %>
-  <% link to "Cancel", :back%>
   <% f.button :submit, class:"btn btn_outline_dark" %>
 <% end %>

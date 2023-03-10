@@ -1,23 +1,39 @@
 <body>
-<div class="cover-container d-flex p-3 mx-auto flex-column" style="height: 100%; background-color :#333">
-    <div class="text-center text-white;">
-      <h1>Save movies and create lists</h1>
-      <h3 class="typed-js" data-controller="typed-js"></h3>
-    </div>
+  <div class="cover-container d-flex p-3 mx-auto flex-column" style="height: 100%;">
+      <div class="text-center text-white;">
+        <h1>Save movies and create lists</h1>
+        <h3 class="typed-js" data-controller="typed-js"></h3>
+      </div>
 
-  <div class="container py-5">
-    <div class="d-flex align-items-center justify-content-between mb-3">
-      <h3 class="mb-0">My Lists</h3>
-      <%= link_to "Create a movie list", new_list_path, class:"btn btn-ghost" %>
-    </div>
-    <div class="row">
-      <% @lists.each do |list| %>
-        <div class="co-12 col-sm-6 col-md-4 mb-3">
-          <%= link_to list_path(list), class:"text-decoration-none" do %>
+    <div class="container py-5">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h3 class="mb-0">My Lists</h3>
+        <%= link_to "Create a movie list", new_list_path, class:"btn btn-ghost" %>
+      </div>
+
+      <div class="container">
+        <div class="row row-colums-6">
+          <% @lists.each do |list| %>
+            <div class="card m-3 p-3 shadow col" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <%= cl_image_tag list.photo.key, crop: :fill, class: "card-img" %>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= link_to list.name, list_path(list), class: "card-link" %></h5>
+                    <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words(list.updated_at) %> ago</small></p>
+                    <%= link_to "Edit", edit_list_path(list), class: "btn btn-ghost mr-2" %>
+                    <%= link_to "Show", list_path(list), class: "btn btn-ghost" %>
+                  </div>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
-      <% end %>
+      </div>
+
+
     </div>
   </div>
-</div>
 </body>
