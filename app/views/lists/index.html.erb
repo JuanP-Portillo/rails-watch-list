@@ -1,9 +1,23 @@
-<h1>Pana</1>
-<h1> LIST OF ALL MOVIES </h1>
-<ul>
-<% @lists.each do |list| %>
-<li><%= link_to list.name, list_path(list) %></li>
-<% end %>
-</ul>
+<body>
+<div class="cover-container d-flex p-3 mx-auto flex-column" style="height: 100%; background-color :#333">
+    <div class="text-center text-white;">
+      <h1>Save movies and create lists</h1>
+      <h3 class="typed-js" data-controller="typed-js"></h3>
+    </div>
 
-<%= link_to  "New list", new_list_path, class: "btn btn-secondary" %>
+  <div class="container py-5">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h3 class="mb-0">My Lists</h3>
+      <%= link_to "Create a movie list", new_list_path, class:"btn btn-ghost" %>
+    </div>
+    <div class="row">
+      <% @lists.each do |list| %>
+        <div class="co-12 col-sm-6 col-md-4 mb-3">
+          <%= link_to list_path(list), class:"text-decoration-none" do %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
